@@ -1,19 +1,25 @@
 const express = require('express');
+const bodyParser = require('body-parser'); // Require body-parser
 const db = require('./db');
 const User = require('./models/User');
 const AvailabilitySlot = require('./models/AvailabilitySlot');
+const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
+app.use(cors());
 db.connect();
 
 const usersRoutes = require('./routes/users');
 const availabilityRoutes = require('./routes/availability');
-const buildResponse = require("./ResponseBuilder/responseBuilder");
+const buildResponse = require("./responses/PrepareUserSlotsGivenDate");
 
-app.use('/api/users', usersRoutes);
-app.use('/api/availability', availabilityRoutes);
+app.use(cors());
+app.use(bodyParser.json());
+app.use('/users', usersRoutes);
+app.use('/availability', availabilityRoutes);
+//app.use('/api/users/musicians/all', usersRoutes)
 
 // app.get('/test', async (req, res) => {
 //     try {
