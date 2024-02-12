@@ -51,58 +51,59 @@ app.use('/availability', availabilityRoutes);
 //     }
 // });
 
-app.get('/test2', async (req, res) => {
-    try {
-        const userId = '65c6b8bb2fc38ebd5334ae0b';
-        const date = '2024-02-10';
+// app.get('/test2', async (req, res) => {
+//     try {
+//         const userId = '65c6b8bb2fc38ebd5334ae0b';
+//         const date = '2024-02-10';
 
-        const response = await buildResponse.buildResponse(userId, date);
+//         const response = await buildResponse.buildResponse(userId, date);
 
-        res.json(response);
-    } catch (error) {
-        console.error('Error generating test response:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
+//         res.json(response);
+//     } catch (error) {
+//         console.error('Error generating test response:', error);
+//         res.status(500).send('Internal Server Error');
+//     }
+// });
 
 
-app.get('/test3', async (req, res) => {
-    try {
-        const newUser = new User({
-            name: 'Sam Mic',
-            email: 'sam@example.com'
-        });
-        await newUser.save();
+// app.get('/test3', async (req, res) => {
+//     try {
+//         const newUser = new User({
+//             name: 'Sam Mic',
+//             email: 'sam@example.com'
+//         });
+//         await newUser.save();
 
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
+//         const tomorrow = new Date();
+//         tomorrow.setDate(tomorrow.getDate() + 1);
 
-        const startTimes = [];
-        const endTimes = [];
-        for (let i = 0; i < 8; i++) {
-            const startTime = new Date(tomorrow);
-            startTime.setHours(9 + i);
-            startTimes.push(startTime);
-            const endTime = new Date(startTime);
-            endTime.setHours(startTime.getHours() + 1);
-            endTimes.push(endTime);
-            const newSlot = new AvailabilitySlot({
-                user_id: newUser._id,
-                start_time: startTime,
-                end_time: endTime,
-                is_booked: false
-            });
-            await newSlot.save();
-        }
+//         const startTimes = [];
+//         const endTimes = [];
+//         for (let i = 0; i < 8; i++) {
+//             const startTime = new Date(tomorrow);
+//             startTime.setHours(9 + i);
+//             startTimes.push(startTime);
+//             const endTime = new Date(startTime);
+//             endTime.setHours(startTime.getHours() + 1);
+//             endTimes.push(endTime);
+//             const newSlot = new AvailabilitySlot({
+//                 user_id: newUser._id,
+//                 start_time: startTime,
+//                 end_time: endTime,
+//                 is_booked: false
+//             });
+//             await newSlot.save();
+//         }
 
-        res.send('User "Sam Mic" created with availability slots for tomorrow (February 10, 2024)');
-    } catch (error) {
-        console.error('Error creating user and slots:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
+//         res.send('User "Sam Mic" created with availability slots for tomorrow (February 10, 2024)');
+//     } catch (error) {
+//         console.error('Error creating user and slots:', error);
+//         res.status(500).send('Internal Server Error');
+//     }
+// });
 
 const server = app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 handleServerShutdown(server);

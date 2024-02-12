@@ -36,8 +36,8 @@ const sampleMusicians = [
 
 const generateSampleUsers = async () => {
     try {
-        await User.deleteMany({}); // Clear existing users
-        await User.insertMany(sampleMusicians); // Insert sample musicians
+        await User.deleteMany({});
+        await User.insertMany(sampleMusicians);
         console.log('Sample users created successfully');
     } catch (error) {
         console.error('Error generating sample users:', error);
