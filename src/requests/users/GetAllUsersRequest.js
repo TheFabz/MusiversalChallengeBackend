@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Musician = require('../models/User');
+const Musician = require('../../models/User');
 
 router.get('/', async (req, res, next) => {
     console.log("getting musicians");

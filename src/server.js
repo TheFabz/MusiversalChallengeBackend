@@ -1,3 +1,4 @@
+const {handleServerShutdown} = require('./serverUtil');
 const express = require('express');
 const bodyParser = require('body-parser'); // Require body-parser
 const db = require('./db');
@@ -8,8 +9,7 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
-db.connect();
+db.connect()
 
 const usersRoutes = require('./routes/users');
 const availabilityRoutes = require('./routes/availability');
@@ -19,7 +19,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/users', usersRoutes);
 app.use('/availability', availabilityRoutes);
-//app.use('/api/users/musicians/all', usersRoutes)
+
 
 // app.get('/test', async (req, res) => {
 //     try {
@@ -28,7 +28,7 @@ app.use('/availability', availabilityRoutes);
 //             email: 'john@example.com'
 //         });
 //         await newUser.save();
-//
+
 //         const currentDate = new Date();
 //         for (let i = 0; i < 8; i++) {
 //             const startTime = new Date(currentDate);
@@ -43,7 +43,7 @@ app.use('/availability', availabilityRoutes);
 //             });
 //             await newSlot.save();
 //         }
-//
+
 //         res.send('Test data added successfully');
 //     } catch (error) {
 //         console.error('Error adding test data:', error);
@@ -102,6 +102,7 @@ app.get('/test3', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+handleServerShutdown(server);
