@@ -3,7 +3,7 @@ const router = express.Router();
 const getAllUsersRouter = require('../requests/users/GetAllUsersRequest');
 const createNewUserRouter = require('../requests/users/CreateNewUserRequest');
 const deleteAllUsersRouter = require('../requests/users/DeleteAllUsersRequest');
-const generateSampleMusiciansRouter = require('../requests/users/GenerateSampleMusicians');
+const generateSampleMusiciansRouter = require('../requests/users/GenerateSampleMusiciansRequest');
 
 router.use('/get-all', getAllUsersRouter);
 router.use('/create', createNewUserRouter);

@@ -1,9 +1,7 @@
 const {handleServerShutdown} = require('./serverUtil');
 const express = require('express');
-const bodyParser = require('body-parser'); // Require body-parser
+const bodyParser = require('body-parser');
 const db = require('./db');
-const User = require('./models/User');
-const AvailabilitySlot = require('./models/AvailabilitySlot');
 const cors = require('cors');
 
 const app = express();
@@ -13,12 +11,14 @@ db.connect()
 
 const usersRoutes = require('./routes/users');
 const availabilityRoutes = require('./routes/availability');
-const buildResponse = require("./responses/PrepareUserSlotsGivenDate");
+const bookingRoutes = require('./routes/bookings')
 
 app.use(cors());
 app.use(bodyParser.json());
+
 app.use('/users', usersRoutes);
 app.use('/availability', availabilityRoutes);
+app.use('/booking', bookingRoutes);
 
 
 // app.get('/test', async (req, res) => {

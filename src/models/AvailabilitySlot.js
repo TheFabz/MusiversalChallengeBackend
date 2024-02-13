@@ -5,7 +5,6 @@ const availabilitySlotSchema = new mongoose.Schema({
     start_time: Date,
     end_time: Date,
     is_booked: Boolean,
-    // Add other availability slot fields as needed
 });
 
 const AvailabilitySlot = mongoose.model('AvailabilitySlot', availabilitySlotSchema);

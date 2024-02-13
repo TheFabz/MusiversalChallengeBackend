@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const AvailabilitySlot = require('../models/AvailabilitySlot');
+const AvailabilitySlot = require('../../models/AvailabilitySlot');
 
 router.post('/', async (req, res) => {
     try {
@@ -20,7 +20,6 @@ router.post('/', async (req, res) => {
                 const endTime = new Date(startTime);
                 endTime.setHours(startTime.getHours() + 1);
 
-                 // Check if it's lunchtime (1pm to 2pm)
                 const isBusy = hour === 13;
 
                 availabilities.push({
