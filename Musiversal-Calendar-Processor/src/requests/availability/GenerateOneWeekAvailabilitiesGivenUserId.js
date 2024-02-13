@@ -16,17 +16,18 @@ router.post('/', async (req, res) => {
 
             for (let hour = 9; hour < 18; hour++) {
                 const startTime = new Date(currentDate);
-                startTime.setHours(hour);
+                startTime.setHours(hour, 0, 0); // Reset minutes and seconds to 0
                 const endTime = new Date(startTime);
                 endTime.setHours(startTime.getHours() + 1);
 
-                const isBusy = hour === 13;
+                const isLunchHour = hour === 13; // Lunch hour from 1pm to 2pm
+                const isBusy = isLunchHour || (Math.random() < 0.2 && !isLunchHour); // 20% chance of being busy for non-lunch slots
 
                 availabilities.push({
                     user_id: userId,
                     start_time: startTime,
                     end_time: endTime,
-                    is_booked: isBusy ? true : false
+                    is_booked: isBusy
                 });
             }
         });

@@ -5,6 +5,7 @@ const bookingSchema = new mongoose.Schema({
     customerEmail: String,
     bookedDate: Date,
     musicianId: String,
+    availabilityId: String,
     requestedServices: [String],
 });
 

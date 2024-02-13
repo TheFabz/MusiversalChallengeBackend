@@ -18,7 +18,6 @@ router.post('/', async (req, res) => {
         const availabilitySlots = await AvailabilitySlot.find({
             user_id: userId,
             start_time: { $gte: startDate, $lt: endDate },
-            is_booked: false
         });
 
         const response = {
@@ -28,7 +27,8 @@ router.post('/', async (req, res) => {
             },
             availableSlots: availabilitySlots.map(slot => ({
                 start_time: slot.start_time,
-                end_time: slot.end_time
+                end_time: slot.end_time,
+                is_booked: slot.is_booked
             }))
         };
 

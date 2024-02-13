@@ -1,7 +1,8 @@
 const {handleServerShutdown} = require('./serverUtil');
 const express = require('express');
-const bodyParser = require('body-parser');
 const db = require('./db');
+
+const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
@@ -9,12 +10,12 @@ const PORT = process.env.PORT || 3001;
 
 db.connect()
 
+app.use(cors());
+app.use(bodyParser.json());
+
 const usersRoutes = require('./routes/users');
 const availabilityRoutes = require('./routes/availability');
 const bookingRoutes = require('./routes/bookings')
-
-app.use(cors());
-app.use(bodyParser.json());
 
 app.use('/users', usersRoutes);
 app.use('/availability', availabilityRoutes);
