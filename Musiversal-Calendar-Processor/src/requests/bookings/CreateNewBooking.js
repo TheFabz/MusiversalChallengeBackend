@@ -11,12 +11,8 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ message: 'All fields are required' });
         }
 
-        const currentDate = new Date();
-        const selectedDate = new Date(bookedDate);
-
-        if (selectedDate >= currentDate) {
-            return res.status(400).json({ message: 'That slot is no longer available' });
-        }
+        // const currentDate = new Date();
+        // const selectedDate = new Date(bookedDate);
 
         const availabilitySlot = await AvailabilitySlot.findById(availabilityId);
         if (!availabilitySlot) {

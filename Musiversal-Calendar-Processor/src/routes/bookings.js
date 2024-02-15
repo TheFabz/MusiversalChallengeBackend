@@ -6,11 +6,14 @@ const getAllBookings = require('../requests/bookings/GetAllBookings');
 const deleteAllBookings = require('../requests/bookings/DeleteAllBookings');
 const deleteBookingGivenId = require('../requests/bookings/DeleteBookingGivenId');
 const GetAllBookingsForGivenMusician = require('../requests/bookings/GetAllBookingsForGivenMusician');
+const prepareRelevantBookingInfo = require('../responses/PrepareBookingCardInfo');
+
 
 router.use('/create', createNewBooking);
 router.use('/get-all', getAllBookings);
 router.use('/delete-all', deleteAllBookings);
 router.use('/delete-booking-given-id', deleteBookingGivenId);
 router.use('/get-all-musician-bookings', GetAllBookingsForGivenMusician);
+router.use('/get-prepared-bookings', prepareRelevantBookingInfo);
 
 module.exports = router;
