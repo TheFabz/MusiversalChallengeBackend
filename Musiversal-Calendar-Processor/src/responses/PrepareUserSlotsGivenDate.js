@@ -28,7 +28,8 @@ router.post('/', async (req, res) => {
             availableSlots: availabilitySlots.map(slot => ({
                 start_time: slot.start_time,
                 end_time: slot.end_time,
-                is_booked: slot.is_booked
+                is_booked: slot.is_booked,
+                slot_id: slot._id
             }))
         };
 
