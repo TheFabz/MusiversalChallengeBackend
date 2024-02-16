@@ -15,9 +15,23 @@ router.post('/', async (req, res) => {
         const endDate = new Date(date);
         endDate.setDate(endDate.getDate() + 1);
 
-        const availabilitySlots = await AvailabilitySlot.find({
+        let availabilitySlots = await AvailabilitySlot.find({
             user_id: userId,
             start_time: { $gte: startDate, $lt: endDate },
+        });
+
+        // Update slots and response
+        const updatedSlots = availabilitySlots.map(slot => {
+            if (!slot.is_booked && new Date(slot.start_time) < new Date()) {
+                slot.is_booked = true;
+                AvailabilitySlot.findByIdAndUpdate(slot._id, { is_booked: true }).exec(); // Update in database
+            }
+            return {
+                start_time: slot.start_time,
+                end_time: slot.end_time,
+                is_booked: slot.is_booked,
+                slot_id: slot._id
+            };
         });
 
         const response = {
@@ -25,12 +39,7 @@ router.post('/', async (req, res) => {
                 name: user.name,
                 email: user.email,
             },
-            availableSlots: availabilitySlots.map(slot => ({
-                start_time: slot.start_time,
-                end_time: slot.end_time,
-                is_booked: slot.is_booked,
-                slot_id: slot._id
-            }))
+            availableSlots: updatedSlots
         };
 
         res.json(response);
