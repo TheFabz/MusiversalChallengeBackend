@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Booking = require('../../models/Booking');
 
-router.delete('/:id', async (req, res) => {
-    const { id } = req.params;
+router.delete('/', async (req, res) => {
+    const { id } = req.body;
     try {
         const deletedBooking = await Booking.findByIdAndDelete(id);
         if (!deletedBooking) {

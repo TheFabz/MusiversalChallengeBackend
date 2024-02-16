@@ -16,13 +16,12 @@ app.use(bodyParser.json());
 const usersRoutes = require('./routes/users');
 const availabilityRoutes = require('./routes/availability');
 const bookingRoutes = require('./routes/bookings')
+const resetApp = require('./routes/reset')
 
 app.use('/users', usersRoutes);
 app.use('/availability', availabilityRoutes);
 app.use('/booking', bookingRoutes);
-
-
-// app.get('/test', async (req, res) => {
+app.use('/reset', resetApp);
 //     try {
 //         const newUser = new User({
 //             name: 'John Doe',
