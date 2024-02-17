@@ -1,12 +1,12 @@
 
 const express = require('express');
 const router = express.Router();
-const createNewBooking = require('../requests/bookings/CreateNewBooking');
-const getAllBookings = require('../requests/bookings/GetAllBookings');
-const deleteAllBookings = require('../requests/bookings/DeleteAllBookings');
-const deleteBookingGivenId = require('../requests/bookings/DeleteBookingGivenId');
-const GetAllBookingsForGivenMusician = require('../requests/bookings/GetAllBookingsForGivenMusician');
-const prepareRelevantBookingInfo = require('../responses/PrepareBookingCardInfo');
+const createNewBooking = require('../requests/bookings/createNewBooking');
+const getAllBookings = require('../requests/bookings/getAllBookings');
+const deleteAllBookings = require('../requests/bookings/deleteAllBookings');
+const deleteBookingGivenId = require('../requests/bookings/deleteBookingGivenId');
+const GetAllBookingsForGivenMusician = require('../requests/bookings/getAllBookingsForGivenMusician');
+const prepareRelevantBookingInfo = require('../responses/prepareBookingCardInfo');
 
 
 router.use('/create', createNewBooking);

@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const deleteAllAvailabilitiesRouter = require('../requests/availability/DeleteAllAvailabilities');
-const deleteAllUserAvailabilitiesRouter = require('../requests/availability/DeleteAllUserAvailabilities');
-const generateAvailabilitySlotsGivenUserIdRouter = require('../requests/availability/GenerateOneWeekAvailabilitiesGivenUserId');
-const generateAvailabilitySlotsAllUsersRouter = require('../requests/availability/GenerateOneWeekAvailabilitiesAllUsers');
-const unbookAllSlots = require('../requests/availability/UnbookAllSlots');
-const prepareUserSoltsGivenIdAndDate = require('../responses/PrepareUserSlotsGivenDate');
+const deleteAllAvailabilitiesRouter = require('../requests/availability/deleteAllAvailabilities');
+const deleteAllUserAvailabilitiesRouter = require('../requests/availability/deleteAllUserAvailabilities');
+const generateAvailabilitySlotsGivenUserIdRouter = require('../requests/availability/generateOneWeekAvailabilitiesGivenUserId');
+const generateAvailabilitySlotsAllUsersRouter = require('../requests/availability/generateOneWeekAvailabilitiesAllUsers');
+const unbookAllSlots = require('../requests/availability/unbookAllSlots');
+const prepareUserSoltsGivenIdAndDate = require('../responses/prepareUserSlotsGivenDate');
 
 router.use('/delete-all', deleteAllAvailabilitiesRouter);
 router.use('/delete-user-slots', deleteAllUserAvailabilitiesRouter);

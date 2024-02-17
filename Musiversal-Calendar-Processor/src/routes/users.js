@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const getAllUsersRouter = require('../requests/users/GetAllUsersRequest');
-const createNewUserRouter = require('../requests/users/CreateNewUserRequest');
-const deleteAllUsersRouter = require('../requests/users/DeleteAllUsersRequest');
-const generateSampleMusiciansRouter = require('../requests/users/GenerateSampleMusiciansRequest');
+const getAllUsersRouter = require('../requests/users/getAllUsersRequest');
+const createNewUserRouter = require('../requests/users/createNewUserRequest');
+const deleteAllUsersRouter = require('../requests/users/deleteAllUsersRequest');
+const generateSampleMusiciansRouter = require('../requests/users/generateSampleMusiciansRequest');
 
 router.use('/get-all', getAllUsersRouter);
 router.use('/create', createNewUserRouter);
